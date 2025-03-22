@@ -1,0 +1,30 @@
+yay -S zsh
+chsh -s $(which zsh)
+
+restart computer
+echo $SHELL
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+yay -S neovim
+yay -S neofetch
+
+#Install pure theme
+mkdir -p "$HOME/.zsh"
+git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
+
+# .zshrc
+fpath+=($HOME/.zsh/pure)
+autoload -U promptinit; promptinit
+prompt pure
+
+#Install plugins
+# zsh autosuggestions
+# zsh syntax-highlighting
+maybe install fzf propertly first
+# fzf-zsh-plugin
+
+setup Aci - Gogh color scheme
+
+got bat, eza
+
+update mirrorlist to South African mirrors
