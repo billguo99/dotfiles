@@ -20,8 +20,11 @@ prompt pure
 #Install plugins
 # zsh autosuggestions
 # zsh syntax-highlighting
-maybe install fzf propertly first
 # fzf-zsh-plugin
+
+# get fzf-zsh-plugin to work
+mkdir -p "$HOME/.fzf/shell"
+fzf --zsh >> "$HOME/.fzf/shell/key-bindings.zsh"
 
 setup Aci - Gogh color scheme
 
