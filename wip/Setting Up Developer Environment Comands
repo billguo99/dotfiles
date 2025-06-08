@@ -1,21 +1,20 @@
 yay -S zsh
 chsh -s $(which zsh)
 
-restart computer
+# restart computer
 echo $SHELL
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-yay -S neovim
-yay -S neofetch
+yay -S neovim neofetch eza bat
 
 #Install pure theme
 mkdir -p "$HOME/.zsh"
 git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 
-# .zshrc
-fpath+=($HOME/.zsh/pure)
-autoload -U promptinit; promptinit
-prompt pure
+# Add the following to .zshrc
+#fpath+=($HOME/.zsh/pure)
+#autoload -U promptinit; promptinit
+#prompt pure
 
 #Install plugins
 # zsh autosuggestions
@@ -26,8 +25,15 @@ prompt pure
 mkdir -p "$HOME/.fzf/shell"
 fzf --zsh >> "$HOME/.fzf/shell/key-bindings.zsh"
 
-setup Aci - Gogh color scheme
+# setup Aci - Gogh color scheme
+bash -c  "$(wget -qO- https://git.io/vQgMr)" 
+# Aci is option 3
+# go to preferences and set colors to Aci
 
-got bat, eza
+# update mirrorlist to South African mirrors
+sudo pacman -S reflector
+sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
+sudo reflector --country 'South Africa' --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
 
-update mirrorlist to South African mirrors
+# Make Linux use local time
+timedatectl set-local-rtc 1 --adjust-system-clock
